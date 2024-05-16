@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/api/mistral')
+@app.route('/')
 def mistral_endpoint():
     ask_param = request.args.get('ask')
     if ask_param:
@@ -21,4 +21,4 @@ def mistral_endpoint():
         return jsonify({'error': 'Paramètre \'ask\' manquant dans la requête'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
